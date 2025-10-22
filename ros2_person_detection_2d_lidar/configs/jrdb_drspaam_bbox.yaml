@@ -1,0 +1,30 @@
+data:
+    inference:
+        transform:
+            name: Compose
+            transforms:
+                - name: ScanToTensor
+                  kwargs:
+                      # Default value also used for training the model. Does not depend on actual sensor range. See DROW paper for further information.
+                      distance_padding: 29.99
+                      inplace: true
+                - name: ToDtype
+                - name: ScanCutout
+                  kwargs:
+                      num_points: 56
+                      width_window: 1.0
+                      depth_window: 0.5
+                      distance_padding: 29.99
+                      use_centered: true
+                      use_area_downsampling: true
+model:
+    name: DrspaamBbox
+    shape_input: [1, 1, 1, 56]
+    kwargs:
+        num_channels_hidden_memory: 128
+        num_neighbors_attention: 11
+        rate_update_autoregression: 0.5
+        prob_dropout: 0.5
+        temperature_confidence: 3.0
+checkpoint:
+    name: jrdb_dr_spaam_with_bev_box_e20

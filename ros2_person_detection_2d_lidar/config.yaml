@@ -1,0 +1,10 @@
+# Paths
+path_dir_checkpoints: /home/bertan/colcon_ws/src/ros2_person_detection_2d_lidar/resources/checkpoints
+path_dir_onnx: /home/bertan/colcon_ws/src/ros2_person_detection_2d_lidar/resources/models_onnx
+path_dir_engines: /home/bertan/colcon_ws/src/ros2_person_detection_2d_lidar/resources/engines
+
+# CPU
+num_workers_dataloading: 4
+
+# Seed RNGs
+seed_rngs: 42
